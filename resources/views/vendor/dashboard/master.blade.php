@@ -37,10 +37,7 @@
 <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
         <img src="{{ asset('/') }}assets/frontend/images/dashboard_user.jpg" alt="img" class="img-fluid">
-        <div class="text-white">
-            <h4 class="text-white">{{ Auth::user()->name }}</h4>
-            <h6 class="text-white">{{ Auth::user()->email }}</h6>
-        </div>
+        <p>anik roy</p>
     </div>
 </div>
 <!--=============================
@@ -123,9 +120,6 @@
         @foreach($errors->all() as $error)
         toastr.error( "{{ $error }}" );
         @endforeach
-    @endif
-    @if(session('success'))
-        toastr.success( "{{ session('success') }}" );
     @endif
 </script>
 </body>
