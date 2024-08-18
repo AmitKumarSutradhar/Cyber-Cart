@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>General Dashboard &mdash; Stisla</title>
 
     <!-- General CSS Files -->
@@ -68,6 +69,7 @@
 <script  src="{{ asset('/') }}assets/backend/admin/modules/summernote/summernote-bs4.js"></script>
 <script  src="{{ asset('/') }}assets/backend/admin/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 <script  src="//cdn.datatables.net/2.1.4/js/dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Page Specific JS File -->
 <script  src="{{ asset('/') }}assets/backend/admin/js/page/index-0.js"></script>
@@ -75,6 +77,62 @@
 <!-- Template JS File -->
 <script  src="{{ asset('/') }}assets/backend/admin/js/scripts.js"></script>
 <script  src="{{ asset('/') }}assets/backend/admin/js/custom.js"></script>
+
+<!-- Dynamic Delete Alert -->
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('body').on('click', '.delete-item', function (e) {
+            e.preventDefault();
+            let deleteUrl = $(this).attr('href');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        type: 'DELETE',
+                        url: deleteUrl,
+                        success: function(data){
+                           if(data.status == 'success'){
+                               Swal.fire({
+                                   title: "Deleted!",
+                                   text: "Your file has been deleted.",
+                                   icon: "success"
+                               });
+                               window.location.reload();
+                           } else if(data.status == 'error'){
+                                Swal.fire({
+                                    title: "Can't Deleted!",
+                                    text: data.error,
+                                    icon: "error"
+                                });
+                            }
+                         },
+                        error: function (xhr, staturs, error) {
+                            console.log(error)
+                        }
+                    })
+
+
+                }
+            });
+
+        })
+    })
+</script>
+
 @stack('scripts')
 </body>
 </html>
