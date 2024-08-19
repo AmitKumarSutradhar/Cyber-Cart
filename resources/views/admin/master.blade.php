@@ -16,6 +16,7 @@
     <link rel="stylesheet"  href="{{ asset('/') }}assets/backend/admin/modules/weather-icon/css/weather-icons-wind.min.css">
     <link rel="stylesheet"  href="{{ asset('/') }}assets/backend/admin/modules/summernote/summernote-bs4.css">
     <link rel="stylesheet"  href="//cdn.datatables.net/2.1.4/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet"  href="{{ asset('/') }}assets/backend/admin/css/bootstrap-iconpicker.min.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet"  href="{{ asset('/') }}assets/backend/admin/css/style.css">
@@ -70,6 +71,7 @@
 <script  src="{{ asset('/') }}assets/backend/admin/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 <script  src="//cdn.datatables.net/2.1.4/js/dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script  src="{{ asset('/') }}assets/backend/admin/js/bootstrap-iconpicker.bundle.min.js"></script>
 
 <!-- Page Specific JS File -->
 <script  src="{{ asset('/') }}assets/backend/admin/js/page/index-0.js"></script>
