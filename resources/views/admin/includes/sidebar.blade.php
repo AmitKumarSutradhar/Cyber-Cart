@@ -24,6 +24,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.category.index') }}">Manage Category</a></li>
                     <li><a class="nav-link" href="{{ route('admin.sub-category.index') }}">Manage Sub Category</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.child-category.index') }}">Manage Child Category</a></li>
                     {{--                    <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>--}}
                 </ul>
             </li>
